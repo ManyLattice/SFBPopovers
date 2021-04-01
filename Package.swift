@@ -17,6 +17,11 @@ let package = Package(
         .target(
             name: "SFBPopovers",
             dependencies: [],
-            path: "Sources")
+            path: "Sources",
+            publicHeadersPath: ".",
+            cSettings: [
+                .headerSearchPath("."),
+                .headerSearchPath("Private"),
+            ])
     ]
 )
