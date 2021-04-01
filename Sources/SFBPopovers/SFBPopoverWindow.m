@@ -23,7 +23,7 @@
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)windowStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)deferCreation
 {
 #pragma unused(windowStyle)
-	if((self = [super initWithContentRect:contentRect styleMask:NSBorderlessWindowMask backing:bufferingType defer:deferCreation])) {
+    if((self = [super initWithContentRect:contentRect styleMask:NSWindowStyleMaskBorderless backing:bufferingType defer:deferCreation])) {
 		[self setBackgroundColor:[NSColor clearColor]];
 		[self setMovableByWindowBackground:NO];
 		[self setExcludedFromWindowsMenu:YES];
@@ -166,7 +166,6 @@
 	BOOL isVisible = [self isVisible];
 	BOOL isKey = [self isKeyWindow];
 	if(isVisible) {
-		NSDisableScreenUpdates();
 		[parentWindow removeChildWindow:self];
 		[self orderOut:self];
 	}
@@ -187,8 +186,6 @@
 			[self orderFront:self];
 
 		[parentWindow addChildWindow:self ordered:NSWindowAbove];
-
-		NSEnableScreenUpdates();
 	}
 }
 
